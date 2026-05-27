@@ -57,10 +57,15 @@ async function extractText(filepath, originalName) {
     return fs.readFileSync(filepath, 'utf-8')
   }
   if (ext === 'pdf') {
-    const pdfParse = require('pdf-parse/lib/pdf-parse.js')
+    const { PDFParse } = require('pdf-parse')
     const buf = fs.readFileSync(filepath)
-    const data = await pdfParse(buf)
-    return data.text || ''
+    const parser = new PDFParse({ data: buf })
+    try {
+      const result = await parser.getText()
+      return result.text || ''
+    } finally {
+      await parser.destroy()
+    }
   }
   throw new Error(`Unsupported file type: .${ext}. Use .md, .txt, or .pdf.`)
 }
