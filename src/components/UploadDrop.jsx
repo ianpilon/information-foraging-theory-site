@@ -1,64 +1,5 @@
-import { useEffect, useRef, useState } from 'react'
-
-const LIGHT = {
-  pillBg: '#111827',
-  pillText: '#ffffff',
-  modalBg: '#ffffff',
-  text: '#111827',
-  textMuted: '#6b7280',
-  textSecondary: '#374151',
-  border: '#e5e7eb',
-  dropBg: '#f9fafb',
-  dropBgActive: '#eff6ff',
-  dropBorder: '#d1d5db',
-  dropBorderActive: '#2563eb',
-  chip: '#f3f4f6',
-  success: '#065f46',
-  errorText: '#991b1b',
-  errorBg: '#fef2f2',
-  primaryBtnBg: '#111827',
-  primaryBtnText: '#ffffff',
-  secondaryBtnBg: '#ffffff',
-  secondaryBtnText: '#111827',
-  overlay: 'rgba(0,0,0,0.30)',
-  shadow: '0 20px 50px rgba(0,0,0,0.25)',
-}
-
-const DARK = {
-  pillBg: '#f9fafb',
-  pillText: '#111827',
-  modalBg: '#111827',
-  text: '#f3f4f6',
-  textMuted: '#9ca3af',
-  textSecondary: '#d1d5db',
-  border: '#374151',
-  dropBg: '#1f2937',
-  dropBgActive: '#1e3a8a',
-  dropBorder: '#4b5563',
-  dropBorderActive: '#60a5fa',
-  chip: '#374151',
-  success: '#34d399',
-  errorText: '#fca5a5',
-  errorBg: '#450a0a',
-  primaryBtnBg: '#f9fafb',
-  primaryBtnText: '#111827',
-  secondaryBtnBg: '#1f2937',
-  secondaryBtnText: '#f3f4f6',
-  overlay: 'rgba(0,0,0,0.55)',
-  shadow: '0 20px 50px rgba(0,0,0,0.55)',
-}
-
-function useIsDark() {
-  const [isDark, setIsDark] = useState(false)
-  useEffect(() => {
-    const check = () => setIsDark(document.documentElement.classList.contains('dark'))
-    check()
-    const obs = new MutationObserver(check)
-    obs.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
-    return () => obs.disconnect()
-  }, [])
-  return isDark
-}
+import { useRef, useState } from 'react'
+import { useThemeTokens } from './useThemeTokens'
 
 export default function UploadDrop() {
   const [open, setOpen] = useState(false)
@@ -67,8 +8,7 @@ export default function UploadDrop() {
   const [error, setError] = useState(null)
   const [result, setResult] = useState(null)
   const inputRef = useRef(null)
-  const isDark = useIsDark()
-  const C = isDark ? DARK : LIGHT
+  const C = useThemeTokens()
 
   async function upload(file) {
     if (!file) return
@@ -153,7 +93,7 @@ export default function UploadDrop() {
             top: '50%',
             transform: 'translate(-50%, -50%)',
             width: 'min(520px, 92vw)',
-            background: C.modalBg,
+            background: C.surface,
             color: C.text,
             borderRadius: '14px',
             boxShadow: C.shadow,
