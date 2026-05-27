@@ -1,0 +1,46 @@
+# Information Foraging Tools
+
+**Summary**: A catalog of UX visualizations, analysis tools, and design techniques that emerged from Pirolli's group and the broader PARC user interface research group, built on top of the foraging models.
+
+**Sources**: NYTECH- Models of Human-Information Interaction for UX Design 10-25-16.pdf
+
+**Last updated**: 2026-05-20
+
+---
+
+## Analysis and prediction tools
+
+**Bloodhound.** An engineering tool developed primarily by Ed Chi. Someone doing usability analysis of a website gives the simulator the site and a bunch of canonical tasks; it returns predicted task completion time, drop-off rate, and choke points. An agent-based simulator that tells you the usability of your website.
+
+**CogTool.** A toolkit that incorporates the foraging model for usability prediction.
+
+**CogTool Explorer.** Developed by Bonnie John (the talk's co-organizer) and Long Tail (likely garbled transcription, possibly Long Wai or similar). Built on top of the foraging model and extended out into understanding visual interaction: how the eye actually moves over a web page or visual display, used to predict how good that display is for supporting information work.
+
+## Visualization systems
+
+**Hyperbolic browser.** Developed mainly by Ramana Rao (transcript: "Ramna Rao"). A tree visualization that lets users move through hierarchical structures faster than the standard file explorer browser. Measured against benchmark tasks for how quickly a user could move through a tree as a function of interaction time.
+
+**Table lens.** Also developed by Ramana Rao. Lets you view hundreds of rows and hundreds of columns at a single time. Measured for how quickly someone could infer properties and relationships about variables: means, variances, relationships. Against a precursor-to-R benchmark, the visualization let users extract more information per unit of time.
+
+## Design techniques for scent
+
+**Scent trails.** Continuously infer what the goal of the user is and use that to re-render the page so that the stuff the system thinks the user is interested in is shown more prominently. Work by Chris Olston and Ruth Rosenholtz and Alison Woodruff.
+
+**Relevance-enhanced thumbnails.** A page preview that combines the visual thumbnail with callouts of the key pieces of text the system thinks the user is interested in. Developed by Allison Woodruff and Ruth Rosenholtz at PARC. Empirically much better than standard techniques.
+
+## The general pattern
+
+All of these are instances of the same workflow: build a computational user model (via [snif-act](/snif-act), [act-r](/act-r), or related), then either use it to predict UX outcomes (Bloodhound, CogTool) or to render the interface so it better fits the user (scent trails, relevance-enhanced thumbnails).
+
+The same pattern repeats in the [sense-making](/sense-making) thread with [twitter-expert-ranking](/twitter-expert-ranking) and in the [behavior-change](/behavior-change) thread with [fittle](/fittle).
+
+## Cost structure of foraging
+
+The shared measurement framework across these tools: cost structure of interaction. Pick benchmark tasks, measure how quickly people can get knowledge out of a system, compare systems on the same benchmarks. The goal is always to make the cost structure of foraging as efficient as possible.
+
+## Related pages
+
+- [information-foraging-theory](/information-foraging-theory)
+- [snif-act](/snif-act)
+- [information-scent](/information-scent)
+- [information-patch-foraging](/information-patch-foraging)

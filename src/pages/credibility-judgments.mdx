@@ -1,0 +1,42 @@
+# Credibility Judgments on Social Media
+
+**Summary**: A research thread on how people decide which sources to trust when there are no curated authorities. Work done with a UC Santa Barbara PI, with Kevin Canini and Vera Liao as primary collaborators.
+
+**Sources**: NYTECH- Models of Human-Information Interaction for UX Design 10-25-16.pdf
+
+**Last updated**: 2026-05-20
+
+---
+
+## The problem
+
+In a world of information filters and bubbles, where you follow people and look at sources without any institutional credibility rating attached, you have to make your own credibility judgments. The research question: how do people make those judgments, and how do those assessments affect downstream decisions?
+
+## The setup
+
+The team designed experiments where they asked people to look at Twitter users and decide whether to follow their recommendations on various tasks. Domains used: financial investment (whether to invest), how much to pay for a used car, dating advice, wine, purchasing bicycles. The choice of bicycles came from the fact that Kevin Canini was a big biker.
+
+The technique: get the person's judgment before they read anything, then have them look at recommendations from various sources, then see whether those recommendations biased them one way or another. The size of that bias is a measurable proxy for the influence of that source on that person.
+
+## Findings
+
+People assigned more credibility to financial experts when the topic was dating advice than to dating experts. This is a counterintuitive finding that Pirolli flags as "maybe that's for a good reason, although maybe this is relevant here." It suggests that perceived expertise in one domain transfers in ways that are not always rational.
+
+## The simulation model
+
+Built by Vera Liao primarily. The team did text mining and social network mining over Twitter, fed those representations into an ACT-R model, presented the simulation with the same credibility tasks, and got predictions of credibility ratings. The model agrees fairly well with human ratings on some domains, less well on others (notably car purchases and dating).
+
+## The applied output
+
+See [twitter-expert-ranking](/twitter-expert-ranking) for the algorithm built on top of this work.
+
+## Connection to the autonomous-systems theme
+
+Pirolli connects this thread to a closing question on autonomous vehicles. People will need to form trust and credibility judgments about black-box AI systems. The same machinery used to model how people judge Twitter sources can be repurposed to model how they judge an autonomous system. See [trust-in-autonomous-systems](/trust-in-autonomous-systems).
+
+## Related pages
+
+- [sense-making](/sense-making)
+- [twitter-expert-ranking](/twitter-expert-ranking)
+- [trust-in-autonomous-systems](/trust-in-autonomous-systems)
+- [act-r](/act-r)

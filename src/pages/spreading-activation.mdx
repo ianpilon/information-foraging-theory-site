@@ -1,0 +1,40 @@
+# Spreading Activation in Human Associative Memory
+
+**Summary**: A model of memory in which one idea brings forth another related idea, activation flows from concept to concept through a network of associations, and the accumulated activation on a goal concept determines how relevant a cue feels.
+
+**Sources**: NYTECH- Models of Human-Information Interaction for UX Design 10-25-16.pdf
+
+**Last updated**: 2026-05-20
+
+---
+
+## The intuition
+
+Pirolli's example: if you think of a memory like going on a picnic, that idea brings forth another, who you were with, what you ate, what the smell of her perfume was like. One memory activates another, which activates another. You have a spreading activation of ideas being brought forth into working memory.
+
+## Why it matters for UX
+
+Spreading activation is the proposed mechanism behind [information-scent](/information-scent). When a user with an information goal looks at a chunk of link text, the words on the page activate concepts, activation spreads through the user's associative network, and the activation that accumulates on the goal concept produces the felt relevance of that link.
+
+This means relevance is not a property of the link, and not a property of the goal. It is a property of the user's associative memory, evaluated against both.
+
+## Lineage
+
+The idea traces back through:
+
+- Early experimental psychology (William James)
+- Empiricist philosophy and the Enlightenment
+- Aristotle
+
+It has been a recurring framework for how memory works for over two thousand years. What is new is the ability to build computational models of it (inside [act-r](/act-r)) and to estimate one for an average user by text-mining a representative corpus.
+
+## How it gets operationalized
+
+To build the relevance-judgment piece of [snif-act](/snif-act), Pirolli's group needed an associative memory for the average user. They used text mining on a representative text sample to construct one. Once built, the simulator could be given an information goal and a screen of link text and would produce predicted click probabilities.
+
+## Related pages
+
+- [information-scent](/information-scent)
+- [snif-act](/snif-act)
+- [act-r](/act-r)
+- [information-foraging-theory](/information-foraging-theory)

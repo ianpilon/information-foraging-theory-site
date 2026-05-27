@@ -1,0 +1,54 @@
+# Information Foraging Theory
+
+**Summary**: A theory of how people search for and consume information, modeled on how animals forage for food. Developed by Peter Pirolli and Stuart Card at Xerox PARC starting in the early 1990s.
+
+**Sources**: NYTECH- Models of Human-Information Interaction for UX Design 10-25-16.pdf
+
+**Last updated**: 2026-05-20
+
+---
+
+## Core idea
+
+When humans search for information, they behave like animals searching for food. The information environment is patchy: useful information clusters in certain "patches" (websites, documents, sections of a page), separated by less useful material. A rational searcher tries to maximize useful information gained per unit of interaction time, just as a forager tries to maximize energy gained per unit of search time.
+
+The theory is the result of pairing two methods: [rational-analysis](/rational-analysis) (asking what an optimal agent would do in a given task environment) and computational cognitive modeling (building a simulation in [act-r](/act-r) that mimics human cognition).
+
+## Origin
+
+Pirolli arrived at PARC in the early 1990s, when the World Wide Web was just emerging. Stuart Card's group anticipated the information glut. They drew the analogy from [optimal-foraging-theory](/optimal-foraging-theory), a branch of applied mathematics in biology that analyzes how well an organism's search and consumption behaviors are tuned to its environment.
+
+## Two sub-problems
+
+Pirolli's group observed two things people do continuously when searching the web:
+
+1. **Navigation by information center**: people are continuously optimizing navigation choices based on the local cues currently in front of them. See [information-scent](/information-scent).
+2. **Information patch foraging**: people continuously decide whether to keep looking on the current page or site, or to give up and go elsewhere. See [information-patch-foraging](/information-patch-foraging).
+
+## What gets predicted
+
+The simulator built around these ideas, [snif-act](/snif-act), predicted about 70 to 80 percent of the variability in human navigation behavior across 600+ users and hundreds of tasks. It also predicted the inverse Gaussian shape of the distribution of "path lengths before quitting a site" (in log-log coordinates, an almost-straight line with a small leg).
+
+## Why model at all
+
+Pirolli's stated reasons for building these detailed models:
+
+- Understand what is really going on, then design better systems
+- Predict in the design space ahead of building, instead of relying only on A/B testing
+- Develop new tools and methods for analysis
+- Increasingly: support intelligent systems and conversational agents that must reason about their human collaborators
+
+## Influence
+
+The theory inspired a generation of UX tools and visualizations. See [information-foraging-tools](/information-foraging-tools) for Bloodhound, CogTool, scent trails, relevance-enhanced thumbnails, hyperbolic browser, and table lens.
+
+## Related pages
+
+- [optimal-foraging-theory](/optimal-foraging-theory)
+- [information-scent](/information-scent)
+- [information-patch-foraging](/information-patch-foraging)
+- [snif-act](/snif-act)
+- [rational-analysis](/rational-analysis)
+- [act-r](/act-r)
+- [information-foraging-tools](/information-foraging-tools)
+- [peter-pirolli](/peter-pirolli)

@@ -1,0 +1,48 @@
+# Self-efficacy
+
+**Summary**: Albert Bandura's social cognitive concept that you have to believe you can do something before you can actually do it. Pirolli's group mapped Bandura's verbal theory into a computational ACT-R model that predicts compliance with exercise goals.
+
+**Sources**: NYTECH- Models of Human-Information Interaction for UX Design 10-25-16.pdf
+
+**Last updated**: 2026-05-20
+
+---
+
+## The verbal theory
+
+Bandura's idea: self-efficacy is the belief that something is achievable. If you do not believe you are going to be able to do something, you probably will not. There is a large literature of behavioral interventions built around this:
+
+- **Vicarious experience.** Seeing someone like you go through something and achieve it raises your self-efficacy.
+- **Guided inactive mastery.** Probably the most effective intervention. See [guided-inactive-mastery](/guided-inactive-mastery).
+
+The verbal theory is well known but stated at a coarse level. People sort of understand it.
+
+## The computational model
+
+Pirolli's group mapped the verbal theory to a finer-grain computational simulation in [act-r](/act-r). The intuition:
+
+1. The simulation considers a goal of activities (the exercises just assigned)
+2. It has an assessment of how difficult those activities are
+3. It calls through memory: what have I done that is similar, what is the maximum difficulty I have ever been able to achieve in the past
+4. From that it forms a perception of how able I am to do this new exercise based on past experiences
+5. It makes a prediction of whether I can do that exercise
+
+Every time the simulation succeeds at an exercise, the success goes into memory and influences the next round of judgment. Every time it fails, the failure similarly goes into memory and decreases self-efficacy.
+
+## The impulse-decay shape
+
+Pirolli describes the model as an "impulse-like model of self-efficacy, kind of like the way your muscles work." Doing something gives you a boost of ability and a boost of self-efficacy, but with time it decays away. Memories get forgotten. So if you have a rapid succession of successes, self-efficacy builds up; if you have a long gap, it bleeds off.
+
+The model predicts fairly well how people perform on the 28-day exercise program in [fittle](/fittle): for every single person, the model traces what their experiences have been so far, predicts whether they will comply with tomorrow's goal, then sees what actually happens, then updates.
+
+## The result
+
+A high correlation between predicted and observed compliance, person by person. The "personalized" condition in the [guided-inactive-mastery](/guided-inactive-mastery) study tracks this model's predictions closely.
+
+## Related pages
+
+- [guided-inactive-mastery](/guided-inactive-mastery)
+- [fittle](/fittle)
+- [behavior-change](/behavior-change)
+- [act-r](/act-r)
+- [habit-formation](/habit-formation)

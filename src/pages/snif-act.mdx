@@ -1,0 +1,44 @@
+# SNIF-ACT
+
+**Summary**: An ACT-R simulator built by Pirolli with Wai-Tat Fu that models how individual users navigate the web in search of information. Combines [information-scent](/information-scent) (within-patch navigation) and [information-patch-foraging](/information-patch-foraging) (when to leave a site).
+
+**Sources**: NYTECH- Models of Human-Information Interaction for UX Design 10-25-16.pdf
+
+**Last updated**: 2026-05-20
+
+---
+
+## Setup
+
+The validation study used a system called WebLogger. The team recruited over 600 people on the web, gave each a benchmark task ranging from very easy to very difficult, sent them to perform it across multiple websites, and collected the traces of every click. Tasks were things people actually do every day: shopping for consumer items, making medical decisions.
+
+The model was then given the same tasks. It would go off on the web and make navigation choices, just as a human user does.
+
+## What it predicts
+
+Two kinds of comparison:
+
+1. **Click frequencies on individual links.** For each link on each page, the team plotted how often a human chose it against how often the simulator chose it. The correlation was high: about 70 to 80 percent of the variability in subject behavior was predicted by the model.
+
+2. **Patch-leaving distributions.** They plotted, for each site, the histogram of path lengths users pursued before giving up, in log-log coordinates. The observed shape is an inverse Gaussian (almost a straight line with a small leg). The model produces the same shape for the same tasks and sites.
+
+## How it works
+
+The simulator runs on top of [act-r](/act-r). The relevance-judgment piece uses [spreading-activation](/spreading-activation) over a model of human associative memory built from text mining a representative corpus. Given an information goal and a screen of links, it computes which link smells strongest and clicks it, then decides whether to keep going or quit.
+
+## Why it matters
+
+SNIF-ACT was the proof that the foraging story could be made quantitative and predictive at the level of individual user choices. It is the technical anchor under [information-foraging-theory](/information-foraging-theory), and the precursor for downstream applied tools like Bloodhound and CogTool. See [information-foraging-tools](/information-foraging-tools).
+
+## Naming note
+
+The transcript renders the collaborator's name as "Wade Tatfou" and "Waitat food." The actual collaborator is Wai-Tat Fu (now at University of Illinois).
+
+## Related pages
+
+- [information-foraging-theory](/information-foraging-theory)
+- [information-scent](/information-scent)
+- [information-patch-foraging](/information-patch-foraging)
+- [spreading-activation](/spreading-activation)
+- [act-r](/act-r)
+- [information-foraging-tools](/information-foraging-tools)

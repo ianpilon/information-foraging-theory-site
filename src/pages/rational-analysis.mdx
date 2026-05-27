@@ -1,0 +1,42 @@
+# Rational Analysis
+
+**Summary**: A modeling methodology that asks how an ideally rational agent would behave in a given task environment, then compares the prediction to observed human behavior. Often paired with computational cognitive modeling in [act-r](/act-r).
+
+**Sources**: NYTECH- Models of Human-Information Interaction for UX Design 10-25-16.pdf
+
+**Last updated**: 2026-05-20
+
+---
+
+## The approach
+
+Rational analysis asks: given the structure of the task environment (how is information arrived, how is it distributed, what does it take to get to that information, what is the time cost of various interactions), what would an optimal agent do? You characterize the environment carefully, derive the optimal policy, and use that as a prediction of human behavior.
+
+## The qualitative-to-quantitative workflow
+
+Pirolli described this as the general approach in almost all of the foraging and sense-making work:
+
+1. Start with qualitative work: surveys, field work, asking people to submit problems they actually do on a daily basis
+2. Use that to define a representative benchmark set of tasks
+3. Bring people into the lab to perform those benchmark tasks while instrumented (web logs, eye tracking)
+4. Build a simulation model in [act-r](/act-r) that attempts to perform the same tasks
+5. Compare simulated to observed behavior across many users and tasks
+
+For navigation tasks, the relevant measurement is "how quickly can people define things." For different domains, the measurement is different.
+
+## Why two methods together
+
+Rational analysis on its own gives you an environmental story but no cognitive mechanism. ACT-R on its own gives you a cognitive mechanism but no environmental grounding. Together, they let you predict what people will do, why they will do it, and how changes to the environment will change the prediction.
+
+## Where it shows up in the talk
+
+- [information-foraging-theory](/information-foraging-theory) is built from this pairing
+- [snif-act](/snif-act) is the ACT-R half for foraging
+- Sense-making models (see [sense-making](/sense-making) and [topic-modeling-knowledge-tracing](/topic-modeling-knowledge-tracing)) follow the same pattern
+- The behavior-change [self-efficacy](/self-efficacy) model follows the same pattern
+
+## Related pages
+
+- [act-r](/act-r)
+- [information-foraging-theory](/information-foraging-theory)
+- [optimal-foraging-theory](/optimal-foraging-theory)

@@ -1,0 +1,84 @@
+# Source: Pirolli NYTECH Talk 2016
+
+**Summary**: Transcript of a NYTECH seminar by Peter Pirolli (Xerox PARC) on computational models of human-information interaction at three timescales: information foraging (seconds to minutes), sense-making (minutes to hours), and behavior change (months to years).
+
+**Sources**: NYTECH- Models of Human-Information Interaction for UX Design 10-25-16.pdf
+
+**Last updated**: 2026-05-20
+
+---
+
+## What it is
+
+A 31-page auto-transcribed talk delivered October 25, 2016 as the first in a six-part NYTECH "Masters of UX Research" seminar series, sponsored by Bloomberg. Speaker is Peter Pirolli, fellow and manager of the Interactive Intelligence Area at Xerox PARC. PhD in psychology from CMU, formerly tenured at Berkeley, worked with Stuart Card and Tom Moran. The transcript misspells his name as "Paroli" throughout.
+
+Note on transcript quality: the file is a raw speech-to-text conversion with no slides. Tool names, collaborator names, and equations are often garbled. Examples: "Tatfou" likely refers to Wai-Tat Fu, "Ramna Rao" likely Ramana Rao, "Vera Laugh" likely Vera Liao, "Spartogus" likely Sparrows or similar tagging system, "fiddle" the Fittle health app.
+
+## Framing
+
+The talk is organized by [timescales-of-human-behavior](/timescales-of-human-behavior), Alan Newell's idea that different mechanisms dominate at different time orders of magnitude:
+
+- Tens to hundreds of milliseconds: neural machinery
+- Hundreds of milliseconds to minutes: information processing operations (memory retrieval, relevance judgment)
+- Minutes to hours: tasks, navigation, cost-benefit reasoning (the "rational band of analysis")
+- Weeks to years: behavior change, habit formation, social phenomena
+
+Pirolli covers three research programs, one at each of the upper three levels.
+
+## Section 1: Information foraging (seconds to minutes)
+
+Origin: arriving at PARC in the early 1990s, Stuart Card's group anticipated information glut and looked to optimal foraging theory in biology as an analogy.
+
+Core ideas covered:
+
+- [information-foraging-theory](/information-foraging-theory) as the umbrella framework, drawing analogy from [optimal-foraging-theory](/optimal-foraging-theory)
+- [information-scent](/information-scent): navigation by local cues on the current screen
+- [information-patch-foraging](/information-patch-foraging): continuous stay-or-leave decisions
+- [spreading-activation](/spreading-activation) in human associative memory as the mechanism behind relevance judgments
+- Implemented in [act-r](/act-r) as the [snif-act](/snif-act) simulator, predicting 70 to 80 percent of user navigation variability
+- Methodology combined [rational-analysis](/rational-analysis) and computational cognitive modeling
+- Spun off into [information-foraging-tools](/information-foraging-tools) like Bloodhound, CogTool, scent trails, relevance-enhanced thumbnails, hyperbolic browser, table lens
+
+## Section 2: Sense-making (minutes to hours)
+
+Sense-making tasks: ill-structured, working with large amounts of data, organizing and interpreting it toward some decision or report.
+
+Examples described:
+
+- Intelligence analyst tracing Soviet bioregulator programs through PubMed
+- Buying a laptop by going through magazine reviews
+- HRL-led project on confirmation bias in intelligence analysis (Pirolli was part of a large team including CMU, PARC, UC Boulder, UT)
+
+Concepts covered:
+
+- [sense-making](/sense-making) as a structured process: gather, represent, interpret, decide
+- [topic-modeling-knowledge-tracing](/topic-modeling-knowledge-tracing) (with Sanjay Kairam, now at Stanford): infer what a user has learned by watching what they read
+- [credibility-judgments](/credibility-judgments) on social media (with Kevin Canini, Vera Liao at UC Santa Barbara)
+- [twitter-expert-ranking](/twitter-expert-ranking) algorithm combining social network signal and content topic modeling
+
+## Section 3: Behavior change (months to years)
+
+Driver: behavioral and environmental factors cause more deaths than genetics; 70 percent of healthcare costs are due to changeable behaviors; mobile and wearable tech finally lets researchers measure and intervene in everyday life.
+
+Concrete example: [fittle](/fittle), a smartphone app developed for a large Hawaii health organization that runs weight loss programs (81 percent of joiners lose weight, but they rebound after six months, and the organization has a 35,000-person waitlist they cannot service).
+
+Concepts covered:
+
+- [behavior-change](/behavior-change) and the long-term engagement problem
+- [habit-formation](/habit-formation) and the two-circuit neuroscience (prefrontal goal striving, then sensorimotor habit loop)
+- [self-efficacy](/self-efficacy) (Bandura) modeled as an impulse-decay process in [act-r](/act-r)
+- [guided-inactive-mastery](/guided-inactive-mastery) as the personalization technique that produced 65 to 70 percent compliance after four weeks
+
+## Closing themes
+
+- Q&A on autonomous vehicles: black-box AI systems require models of human trust and credibility judgment; mixed-initiative situations will dominate, and users need to know system capabilities and limits. See [trust-in-autonomous-systems](/trust-in-autonomous-systems).
+- Q&A on engagement: variable rewards, goal-setting theory, flow theory; the "always slightly more difficult" channel keeps users engaged.
+- Q&A on social influence in lifestyle change: Jim Fowler's social network work shows obesity and smoking move through networks via strong ties, but the actual mechanism remains poorly understood. Team productivity (referencing the Google study) is "one of the most interesting challenging problems around."
+
+## Related pages
+
+- [information-foraging-theory](/information-foraging-theory)
+- [sense-making](/sense-making)
+- [behavior-change](/behavior-change)
+- [timescales-of-human-behavior](/timescales-of-human-behavior)
+- [peter-pirolli](/peter-pirolli)

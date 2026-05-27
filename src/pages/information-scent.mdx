@@ -1,0 +1,41 @@
+# Information Scent
+
+**Summary**: The local cues on a screen (link text, labels, thumbnails, graphics) that users assess to decide which link or operation to pursue next. Borrowed from the animal foraging concept of following olfactory cues toward prey.
+
+**Sources**: NYTECH- Models of Human-Information Interaction for UX Design 10-25-16.pdf
+
+**Last updated**: 2026-05-20
+
+---
+
+## What it is
+
+When a person looks at a web page or visual display, they make quick judgments about the labels, snippets, and graphics in front of them. They assess which ones smell most relevant to their goal and click accordingly. The set of cues currently visible is called the "information set" for that screen.
+
+Pirolli compared two layouts on a Google-like search results page: standard text-only links on the left, versus relevance-enhanced thumbnails (mixing text and graphics) on the right. The thumbnail version measurably outperformed the standard, because it offered richer scent.
+
+## The mechanism behind it
+
+Scent is grounded in a model of human associative memory, specifically [spreading-activation](/spreading-activation):
+
+1. The user has an information goal in mind (for example, "new medical treatments and procedures for cancer")
+2. They attend to a chunk of link text on screen (for example, "cell, patient, dose, beam")
+3. That perception activates related memories. Activation spreads through associative memory
+4. The amount of activation that accumulates on the goal determines the perceived relevance of the link to the goal
+
+This is encoded in a set of equations inside [snif-act](/snif-act). The associative memory itself is built up by text mining over a representative sample of language, so the simulator can predict navigation for any topic.
+
+## Design implications
+
+- Add richer cues: thumbnails, images, descriptive snippets, glanceable summaries
+- Make labels semantically close to plausible user goals
+- Diagnose dead-end pages by checking whether the visible scent matches the intended goal
+- Tools like CogTool Explorer and Bloodhound use scent models to predict where users will click and where they will give up
+
+## Related pages
+
+- [information-foraging-theory](/information-foraging-theory)
+- [information-patch-foraging](/information-patch-foraging)
+- [spreading-activation](/spreading-activation)
+- [snif-act](/snif-act)
+- [information-foraging-tools](/information-foraging-tools)

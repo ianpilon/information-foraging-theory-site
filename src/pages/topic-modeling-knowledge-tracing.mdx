@@ -1,0 +1,42 @@
+# Topic Modeling for Knowledge Tracing
+
+**Summary**: A method developed with Sanjay Kairam for predicting how much a user has learned about a domain by analyzing the text of every document they read, using topic modeling to infer the underlying topics in each document.
+
+**Sources**: NYTECH- Models of Human-Information Interaction for UX Design 10-25-16.pdf
+
+**Last updated**: 2026-05-20
+
+---
+
+## The premise
+
+Topic modeling is standard in machine learning. It assumes that every word on a page is representative of some underlying topic the author was trying to communicate. As a person reads through textual material, they are reforming or interpreting those topics. By inferring the topics in a document, you can infer what the reader is being exposed to.
+
+## The paradigm
+
+The team brought people into the lab and gave them a sense-making task. Concrete example: read for two days about Web 2.0 mashups, then write an essay or give a presentation on what you learned. Before and after, they were given knowledge tests built by subject matter experts.
+
+The system used was called Sparrows (the transcript renders this as "Spartogus"), developed by Lee Chun-Hong. It supported tagging and highlighting as users browsed, sending it all into a notebook (a precursor to Evernote). The notebook concept was that learning could be shared with others.
+
+## The model
+
+Given a domain like "Web 2.0 mashups":
+
+1. Create a topic model for that domain by running search queries, retrieving all the documents, and developing a domain topic model
+2. For each user, watch them browse and read
+3. Each time they encounter a document, update the user's model of topic knowledge based on what topics that document contained
+4. To predict performance on a later knowledge test, take each test question, profile it against the topic model, and check whether the person read about those topics during browsing
+
+## Results
+
+The team plotted predicted knowledge gain versus observed knowledge gain across users. The correlation was high, confirming that just by watching what people are doing while they are sense-making, you can make a prediction about how much they have learned.
+
+## Why this is interesting
+
+Pirolli notes the next step they have not gotten around to: this provides a continuous way of monitoring user knowledge or user context. With that, a system could be better able to provide recommendations and information that fills in whatever gaps the user is trying to fill. The thread connects to later work on personalized learning, agents that adapt content to the learner, and AI tutors that maintain a model of the student.
+
+## Related pages
+
+- [sense-making](/sense-making)
+- [act-r](/act-r)
+- [behavior-change](/behavior-change)

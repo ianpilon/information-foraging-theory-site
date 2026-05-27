@@ -1,0 +1,57 @@
+{
+  "index": "Index",
+  "-- foundational": {
+    "type": "separator",
+    "title": "Foundational frame"
+  },
+  "information-foraging-theory": "Information foraging theory",
+  "optimal-foraging-theory": "Optimal foraging theory",
+  "timescales-of-human-behavior": "Timescales of human behavior",
+  "peter-pirolli": "Peter Pirolli",
+  "-- foraging": {
+    "type": "separator",
+    "title": "Foraging mechanisms"
+  },
+  "information-scent": "Information scent",
+  "information-patch-foraging": "Information patch foraging",
+  "spreading-activation": "Spreading activation",
+  "-- modeling": {
+    "type": "separator",
+    "title": "Modeling stack"
+  },
+  "act-r": "ACT-R",
+  "snif-act": "SNIF-ACT",
+  "rational-analysis": "Rational analysis",
+  "-- sensemaking": {
+    "type": "separator",
+    "title": "Sense-making"
+  },
+  "sense-making": "Sense-making",
+  "topic-modeling-knowledge-tracing": "Topic modeling and knowledge tracing",
+  "credibility-judgments": "Credibility judgments",
+  "twitter-expert-ranking": "Twitter expert ranking",
+  "-- behavior": {
+    "type": "separator",
+    "title": "Behavior change"
+  },
+  "behavior-change": "Behavior change",
+  "habit-formation": "Habit formation",
+  "self-efficacy": "Self-efficacy",
+  "guided-inactive-mastery": "Guided inactive mastery",
+  "fittle": "Fittle",
+  "-- applied": {
+    "type": "separator",
+    "title": "Applied UX"
+  },
+  "information-foraging-tools": "Information foraging tools",
+  "-- forward": {
+    "type": "separator",
+    "title": "Forward-looking"
+  },
+  "trust-in-autonomous-systems": "Trust in autonomous systems",
+  "-- sources": {
+    "type": "separator",
+    "title": "Sources"
+  },
+  "source-pirolli-nytech-2016": "Pirolli NYTECH 2016"
+}

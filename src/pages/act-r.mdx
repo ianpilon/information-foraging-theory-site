@@ -1,0 +1,43 @@
+# ACT-R
+
+**Summary**: A theory of the structure and functioning of the brain, packaged as a software simulation system. Different modules represent memory, goals, perception, and motor action, and the simulation describes how those modules work together dynamically to produce behavior.
+
+**Sources**: NYTECH- Models of Human-Information Interaction for UX Design 10-25-16.pdf
+
+**Last updated**: 2026-05-20
+
+---
+
+## What it is
+
+ACT-R is both a theory and a piece of software. As a theory, it describes the flow of information through the human mind, decomposing cognition into modules for memory, goals, perception, and motor control. As software, it is a downloadable simulator in which researchers can build cognitive models of specific tasks. It is not easy to use, but many people do.
+
+The system encodes equations for things like:
+
+- How long it takes to retrieve something from memory
+- What is involved in making a decision
+- How memory becomes activated and how that activation flows through memory (see [spreading-activation](/spreading-activation))
+- How reward shapes behavior when something is done correctly
+
+## How Pirolli uses it
+
+ACT-R is the substrate for the three computational models he describes in the 2016 talk:
+
+- [snif-act](/snif-act) models web foraging behavior using spreading activation and patch-leaving rules
+- A topic-modeling extension models how users build domain knowledge while reading. See [topic-modeling-knowledge-tracing](/topic-modeling-knowledge-tracing)
+- A self-efficacy model treats efficacy as impulses that get stored in memory and decay over time. See [self-efficacy](/self-efficacy)
+
+In each case, the workflow is: take a benchmark set of real user tasks, build an ACT-R model, run the simulation on the same tasks, compare simulated behavior to observed behavior. When the correlation is high, the model is a candidate explanation of what humans are doing.
+
+## Why simulate at all
+
+Building one of these models is hard and slow. Pirolli's stated justification: by trying to model something in detail, you develop insight about what is really going on. You then become better positioned to develop engineering and design principles, new tools for analysis, and new methods. You can predict in the design space ahead of building, rather than relying only on A/B testing.
+
+## Related pages
+
+- [snif-act](/snif-act)
+- [spreading-activation](/spreading-activation)
+- [information-foraging-theory](/information-foraging-theory)
+- [rational-analysis](/rational-analysis)
+- [topic-modeling-knowledge-tracing](/topic-modeling-knowledge-tracing)
+- [self-efficacy](/self-efficacy)

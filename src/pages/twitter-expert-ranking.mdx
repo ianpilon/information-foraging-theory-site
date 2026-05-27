@@ -1,0 +1,35 @@
+# Twitter Expert Ranking
+
+**Summary**: A ranking algorithm built primarily by Kevin Canini that, given an ad hoc query like "advice about purchasing cars," ranks Twitter users by their credibility in that domain. Combines social network signal and content topic modeling.
+
+**Sources**: NYTECH- Models of Human-Information Interaction for UX Design 10-25-16.pdf
+
+**Last updated**: 2026-05-20
+
+---
+
+## What it does
+
+You give the algorithm a query domain (financial advice, car purchases, dating advice). It crawls the tweet history of candidate users and produces a ranking of their credibility in that domain.
+
+## How the ranking is computed
+
+Two components:
+
+1. **Social network signal.** Not just how many people follow you, but how many followers are themselves experts in that domain. If financial experts are linked to you, that boosts your credibility on financial topics. This is a domain-conditional version of PageRank.
+
+2. **Content signal.** Topic modeling over the user's tweet history. If a candidate's tweets are very often about the query domain, that boosts their credibility.
+
+## Evaluation
+
+The team sent the rankings out to Mechanical Turk to judge whether the surfaced users were relevant experts and whether the rater would actually follow them. The numbers were comparable to curated sites that pay humans to find expert users in various domains. The algorithm performed well across domains on an ad hoc basis.
+
+## Why it matters
+
+It is an applied output of the [credibility-judgments](/credibility-judgments) research thread, and a concrete example of building UX from a computational user model: the algorithm encodes the team's best model of what humans look for when assessing source credibility, and uses it to produce rankings that match human judgment.
+
+## Related pages
+
+- [credibility-judgments](/credibility-judgments)
+- [sense-making](/sense-making)
+- [information-foraging-tools](/information-foraging-tools)
