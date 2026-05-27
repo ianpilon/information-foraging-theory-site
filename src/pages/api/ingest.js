@@ -107,7 +107,7 @@ File name: ${sourceName}
 
 Source text (may be truncated):
 \`\`\`
-${sourceText.slice(0, 18000)}
+${sourceText.slice(0, 60000)}
 \`\`\`
 
 # What to produce
@@ -140,11 +140,13 @@ Return a single JSON object with this shape:
 }
 
 Guidance:
-- Create 1 summary page named source-... and 3 to 8 concept pages for the major distinct ideas.
+- Create 1 summary page named source-... that captures the source's main argument, key claims, contribution, and methodology in 300 to 500 words of body content. The Summary line at the top stays 1 to 2 sentences, but the body below the --- should have substantive sections, not one-liners.
+- Create 3 to 8 concept pages, one per major distinct idea, mechanism, system, or finding in the source. Each concept page body should be 200 to 400 words. Treat each as a standalone wiki page that explains: what the concept is, why it matters, how it works or what was found, and how it connects to other concepts. Use 2 to 4 short body sections per page (not one-line bullets).
+- Use material from across the FULL source text provided, not just the introduction. If the source has a methods, results, or discussion section, mine those for concrete findings, numbers, and named techniques.
 - If a concept matches an existing slug, link to it via the existing slug instead of creating a duplicate. Mark isNew=false for those.
-- In conceptPages content, freely reference both new and existing slugs via [slug](/slug).
+- In conceptPages content, freely reference both new and existing slugs via [slug](/slug). Aim for 2 to 5 inter-page links per concept page.
 - indexAdditions section names must match existing sections in the current index when possible (Foundational frame, Foraging mechanisms, Modeling stack, Sense-making, Behavior change, Applied UX, Forward-looking, Sources). Use Sources section for the summary page.
-- Keep page bodies focused and factual. No em-dashes. Plain language.
+- Keep page bodies focused and factual. No em-dashes. Plain language. No filler phrases like "in this paper" or "the authors discuss".
 
 Output the JSON now.`
 }
@@ -157,7 +159,7 @@ async function callGroq(prompt, apiKey) {
       model: MODEL,
       messages: [{ role: 'user', content: prompt }],
       temperature: 0.2,
-      max_tokens: 6000,
+      max_tokens: 12000,
       response_format: { type: 'json_object' },
     }),
   })
