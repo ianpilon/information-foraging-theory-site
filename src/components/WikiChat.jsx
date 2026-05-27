@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 import { useThemeTokens } from './useThemeTokens'
 
 const PROMPTS = [
@@ -23,9 +24,9 @@ function renderAssistantText(text, onLinkClick, linkColor) {
     typeof p === 'string' ? (
       <span key={i}>{p}</span>
     ) : (
-      <a key={i} href={p.href} onClick={onLinkClick} style={{ color: linkColor, textDecoration: 'underline' }}>
+      <Link key={i} href={p.href} onClick={onLinkClick} style={{ color: linkColor, textDecoration: 'underline' }}>
         {p.label}
-      </a>
+      </Link>
     )
   )
 }
