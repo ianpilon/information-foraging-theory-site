@@ -1,4 +1,64 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+
+const LIGHT = {
+  pillBg: '#111827',
+  pillText: '#ffffff',
+  modalBg: '#ffffff',
+  text: '#111827',
+  textMuted: '#6b7280',
+  textSecondary: '#374151',
+  border: '#e5e7eb',
+  dropBg: '#f9fafb',
+  dropBgActive: '#eff6ff',
+  dropBorder: '#d1d5db',
+  dropBorderActive: '#2563eb',
+  chip: '#f3f4f6',
+  success: '#065f46',
+  errorText: '#991b1b',
+  errorBg: '#fef2f2',
+  primaryBtnBg: '#111827',
+  primaryBtnText: '#ffffff',
+  secondaryBtnBg: '#ffffff',
+  secondaryBtnText: '#111827',
+  overlay: 'rgba(0,0,0,0.30)',
+  shadow: '0 20px 50px rgba(0,0,0,0.25)',
+}
+
+const DARK = {
+  pillBg: '#f9fafb',
+  pillText: '#111827',
+  modalBg: '#111827',
+  text: '#f3f4f6',
+  textMuted: '#9ca3af',
+  textSecondary: '#d1d5db',
+  border: '#374151',
+  dropBg: '#1f2937',
+  dropBgActive: '#1e3a8a',
+  dropBorder: '#4b5563',
+  dropBorderActive: '#60a5fa',
+  chip: '#374151',
+  success: '#34d399',
+  errorText: '#fca5a5',
+  errorBg: '#450a0a',
+  primaryBtnBg: '#f9fafb',
+  primaryBtnText: '#111827',
+  secondaryBtnBg: '#1f2937',
+  secondaryBtnText: '#f3f4f6',
+  overlay: 'rgba(0,0,0,0.55)',
+  shadow: '0 20px 50px rgba(0,0,0,0.55)',
+}
+
+function useIsDark() {
+  const [isDark, setIsDark] = useState(false)
+  useEffect(() => {
+    const check = () => setIsDark(document.documentElement.classList.contains('dark'))
+    check()
+    const obs = new MutationObserver(check)
+    obs.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
+    return () => obs.disconnect()
+  }, [])
+  return isDark
+}
 
 export default function UploadDrop() {
   const [open, setOpen] = useState(false)
@@ -7,6 +67,8 @@ export default function UploadDrop() {
   const [error, setError] = useState(null)
   const [result, setResult] = useState(null)
   const inputRef = useRef(null)
+  const isDark = useIsDark()
+  const C = isDark ? DARK : LIGHT
 
   async function upload(file) {
     if (!file) return
@@ -57,8 +119,8 @@ export default function UploadDrop() {
           padding: '10px 22px',
           height: '44px',
           borderRadius: '9999px',
-          background: '#111827',
-          color: 'white',
+          background: C.pillBg,
+          color: C.pillText,
           boxShadow: '0 10px 25px rgba(0,0,0,0.20)',
           display: open ? 'none' : 'flex',
           alignItems: 'center',
@@ -78,7 +140,7 @@ export default function UploadDrop() {
       </button>
 
       {open && (
-        <div onClick={() => { setOpen(false); reset() }} style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.30)', zIndex: 70 }} />
+        <div onClick={() => { setOpen(false); reset() }} style={{ position: 'fixed', inset: 0, background: C.overlay, zIndex: 70 }} />
       )}
 
       {open && (
@@ -91,22 +153,29 @@ export default function UploadDrop() {
             top: '50%',
             transform: 'translate(-50%, -50%)',
             width: 'min(520px, 92vw)',
-            background: '#fff',
-            color: '#111827',
+            background: C.modalBg,
+            color: C.text,
             borderRadius: '14px',
-            boxShadow: '0 20px 50px rgba(0,0,0,0.25)',
+            boxShadow: C.shadow,
+            border: `1px solid ${C.border}`,
             zIndex: 80,
             padding: '20px',
           }}
         >
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '14px' }}>
             <div>
-              <div style={{ fontWeight: 700, fontSize: '17px' }}>Add a source</div>
-              <div style={{ fontSize: '12px', color: '#6b7280', marginTop: '4px' }}>
+              <div style={{ fontWeight: 700, fontSize: '17px', color: C.text }}>Add a source</div>
+              <div style={{ fontSize: '12px', color: C.textMuted, marginTop: '4px' }}>
                 Drop a .md, .txt, or .pdf. I'll draft wiki pages and open a PR you can review.
               </div>
             </div>
-            <button onClick={() => { setOpen(false); reset() }} style={{ padding: '6px 10px', fontSize: '14px', border: '1px solid #e5e7eb', borderRadius: '6px', background: 'white', cursor: 'pointer', color: '#111827' }} aria-label="Close">✕</button>
+            <button
+              onClick={() => { setOpen(false); reset() }}
+              aria-label="Close"
+              style={{ padding: '6px 10px', fontSize: '14px', border: `1px solid ${C.border}`, borderRadius: '6px', background: C.secondaryBtnBg, cursor: 'pointer', color: C.secondaryBtnText }}
+            >
+              ✕
+            </button>
           </div>
 
           {status === 'idle' && (
@@ -117,18 +186,18 @@ export default function UploadDrop() {
                 onDrop={handleDrop}
                 onClick={() => inputRef.current?.click()}
                 style={{
-                  border: `2px dashed ${dragOver ? '#2563eb' : '#d1d5db'}`,
+                  border: `2px dashed ${dragOver ? C.dropBorderActive : C.dropBorder}`,
                   borderRadius: '10px',
                   padding: '34px 16px',
                   textAlign: 'center',
-                  background: dragOver ? '#eff6ff' : '#f9fafb',
+                  background: dragOver ? C.dropBgActive : C.dropBg,
                   cursor: 'pointer',
                   fontSize: '14px',
-                  color: '#374151',
+                  color: C.textSecondary,
                 }}
               >
-                <div style={{ fontWeight: 600, marginBottom: '6px' }}>Drop a file here or click to choose</div>
-                <div style={{ fontSize: '12px', color: '#6b7280' }}>.md, .txt, or .pdf (max 10 MB)</div>
+                <div style={{ fontWeight: 600, marginBottom: '6px', color: C.text }}>Drop a file here or click to choose</div>
+                <div style={{ fontSize: '12px', color: C.textMuted }}>.md, .txt, or .pdf (max 10 MB)</div>
               </div>
               <input
                 ref={inputRef}
@@ -141,31 +210,31 @@ export default function UploadDrop() {
           )}
 
           {status === 'uploading' && (
-            <div style={{ padding: '30px 0', textAlign: 'center', fontSize: '14px', color: '#374151' }}>
+            <div style={{ padding: '30px 0', textAlign: 'center', fontSize: '14px', color: C.textSecondary }}>
               <div style={{ marginBottom: '8px' }}>Extracting text, generating pages, opening PR…</div>
-              <div style={{ fontSize: '12px', color: '#6b7280' }}>This usually takes 15 to 45 seconds.</div>
+              <div style={{ fontSize: '12px', color: C.textMuted }}>This usually takes 15 to 45 seconds.</div>
             </div>
           )}
 
           {status === 'done' && result && (
             <div style={{ padding: '8px 0' }}>
-              <div style={{ fontSize: '14px', fontWeight: 600, color: '#065f46', marginBottom: '8px' }}>
+              <div style={{ fontSize: '14px', fontWeight: 600, color: C.success, marginBottom: '8px' }}>
                 Pull request opened
               </div>
-              <div style={{ fontSize: '13px', color: '#374151', marginBottom: '14px', lineHeight: 1.5 }}>
-                Added {result.filesAdded} file(s) on branch <code style={{ background: '#f3f4f6', padding: '1px 6px', borderRadius: '4px' }}>{result.branch}</code>.
+              <div style={{ fontSize: '13px', color: C.textSecondary, marginBottom: '14px', lineHeight: 1.5 }}>
+                Added {result.filesAdded} file(s) on branch <code style={{ background: C.chip, color: C.text, padding: '1px 6px', borderRadius: '4px' }}>{result.branch}</code>.
               </div>
               <a
                 href={result.prUrl}
                 target="_blank"
                 rel="noreferrer"
-                style={{ display: 'inline-block', padding: '10px 14px', background: '#111827', color: 'white', borderRadius: '8px', textDecoration: 'none', fontSize: '13px', fontWeight: 600 }}
+                style={{ display: 'inline-block', padding: '10px 14px', background: C.primaryBtnBg, color: C.primaryBtnText, borderRadius: '8px', textDecoration: 'none', fontSize: '13px', fontWeight: 600 }}
               >
                 Review PR #{result.prNumber} on GitHub →
               </a>
               <button
                 onClick={reset}
-                style={{ marginLeft: '10px', padding: '10px 14px', background: 'white', color: '#111827', border: '1px solid #e5e7eb', borderRadius: '8px', cursor: 'pointer', fontSize: '13px' }}
+                style={{ marginLeft: '10px', padding: '10px 14px', background: C.secondaryBtnBg, color: C.secondaryBtnText, border: `1px solid ${C.border}`, borderRadius: '8px', cursor: 'pointer', fontSize: '13px' }}
               >
                 Upload another
               </button>
@@ -174,13 +243,13 @@ export default function UploadDrop() {
 
           {status === 'error' && (
             <div style={{ padding: '8px 0' }}>
-              <div style={{ fontSize: '14px', fontWeight: 600, color: '#991b1b', marginBottom: '8px' }}>Something went wrong</div>
-              <div style={{ fontSize: '13px', color: '#374151', background: '#fef2f2', padding: '10px 12px', borderRadius: '8px', lineHeight: 1.5, marginBottom: '12px', whiteSpace: 'pre-wrap' }}>
+              <div style={{ fontSize: '14px', fontWeight: 600, color: C.errorText, marginBottom: '8px' }}>Something went wrong</div>
+              <div style={{ fontSize: '13px', color: C.text, background: C.errorBg, padding: '10px 12px', borderRadius: '8px', lineHeight: 1.5, marginBottom: '12px', whiteSpace: 'pre-wrap', border: `1px solid ${C.border}` }}>
                 {error}
               </div>
               <button
                 onClick={reset}
-                style={{ padding: '10px 14px', background: '#111827', color: 'white', border: 'none', borderRadius: '8px', cursor: 'pointer', fontSize: '13px' }}
+                style={{ padding: '10px 14px', background: C.primaryBtnBg, color: C.primaryBtnText, border: 'none', borderRadius: '8px', cursor: 'pointer', fontSize: '13px' }}
               >
                 Try again
               </button>
