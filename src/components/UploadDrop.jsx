@@ -1,5 +1,16 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useThemeTokens } from './useThemeTokens'
+
+function stageFor(elapsed) {
+  if (elapsed < 2) return 'Uploading file'
+  if (elapsed < 7) return 'Extracting text from the file'
+  if (elapsed < 35) return 'Asking Groq to draft wiki pages'
+  return 'Opening pull request on GitHub'
+}
+
+function progressFor(elapsed) {
+  return Math.min(95, 100 - 95 * Math.exp(-elapsed / 18))
+}
 
 export default function UploadDrop() {
   const [open, setOpen] = useState(false)
@@ -7,8 +18,17 @@ export default function UploadDrop() {
   const [status, setStatus] = useState('idle')
   const [error, setError] = useState(null)
   const [result, setResult] = useState(null)
+  const [elapsed, setElapsed] = useState(0)
   const inputRef = useRef(null)
   const C = useThemeTokens()
+
+  useEffect(() => {
+    if (status !== 'uploading') return
+    setElapsed(0)
+    const start = Date.now()
+    const id = setInterval(() => setElapsed((Date.now() - start) / 1000), 250)
+    return () => clearInterval(id)
+  }, [status])
 
   async function upload(file) {
     if (!file) return
@@ -150,9 +170,36 @@ export default function UploadDrop() {
           )}
 
           {status === 'uploading' && (
-            <div style={{ padding: '30px 0', textAlign: 'center', fontSize: '14px', color: C.textSecondary }}>
-              <div style={{ marginBottom: '8px' }}>Extracting text, generating pages, opening PR…</div>
-              <div style={{ fontSize: '12px', color: C.textMuted }}>This usually takes 15 to 45 seconds.</div>
+            <div style={{ padding: '18px 4px 6px', fontSize: '14px', color: C.textSecondary }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '10px' }}>
+                <div style={{ color: C.text, fontWeight: 600 }}>{stageFor(elapsed)}</div>
+                <div style={{ fontSize: '12px', color: C.textMuted, fontVariantNumeric: 'tabular-nums' }}>{Math.floor(elapsed)}s</div>
+              </div>
+              <div
+                role="progressbar"
+                aria-valuemin={0}
+                aria-valuemax={100}
+                aria-valuenow={Math.round(progressFor(elapsed))}
+                style={{
+                  width: '100%',
+                  height: '6px',
+                  background: C.chip,
+                  borderRadius: '9999px',
+                  overflow: 'hidden',
+                }}
+              >
+                <div
+                  style={{
+                    width: `${progressFor(elapsed)}%`,
+                    height: '100%',
+                    background: C.dropBorderActive,
+                    transition: 'width 250ms linear',
+                  }}
+                />
+              </div>
+              <div style={{ marginTop: '10px', fontSize: '12px', color: C.textMuted }}>
+                Usually 15 to 45 seconds. Larger PDFs can take up to 60.
+              </div>
             </div>
           )}
 
